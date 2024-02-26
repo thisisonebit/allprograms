@@ -18,9 +18,10 @@ public class prog_13_list extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_12_imageview);
-        lv=(ListView) findViewById(R.id.lst); ArrayAdapter<String> adapter=new
-                ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,DAYS); lv.setAdapter(adapter);
+        setContentView(R.layout.activity_13_listview);
+        lv=(ListView) findViewById(R.id.lst);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,DAYS);
+        lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
