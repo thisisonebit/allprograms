@@ -18,11 +18,9 @@ public class prog_15_MultTable extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_15_multitable);
-
         e = findViewById(R.id.no);
         b = findViewById(R.id.bt);
         t = findViewById(R.id.txt);
-
         b.setOnClickListener(this);
     }
 

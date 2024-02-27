@@ -1,0 +1,301 @@
+
+1.
+echo -n "Enter the radius of a circle: "
+read r
+area=$(echo "scale=2; 3.14 * ($r * $r)" | bc)
+d=$(echo "scale=2; 2 * $r" | bc)
+circumference=$(echo "scale=2; 3.14 * $d" | bc)
+echo "Area of circle is $area"
+echo "Circumference of circle is $circumference"
+
+
+2.
+echo "Enter a number:"
+read n
+if [ $(expr $n % 2) -eq 0 ]; then
+    echo "Given number $n is even."
+else
+    echo "Given number $n is odd."
+fi
+
+clear
+sum=0
+i="y"
+
+3.
+echo "Enter first number:"
+read n1
+echo "Enter second number:"
+read n2
+
+while [ $i = "y" ]
+do
+    echo "1. Addition"
+    echo "2. Subtraction"
+    echo "3. Multiplication"
+    echo "4. Division"
+    echo "Enter your choice:"
+    read ch
+
+    case $ch in
+        1)
+            sum=`expr $n1 + $n2`
+            echo "Sum = $sum"
+            ;;
+        2)
+            sum=`expr $n1 - $n2`
+            echo "Subtraction = $sum"
+            ;;
+        3)
+            sum=`expr $n1 \* $n2`
+            echo "Multiplication = $sum"
+            ;;
+        4)
+            sum=`expr $n1 / $n2`
+            echo "Division = $sum"
+            ;;
+        *)
+            echo "Invalid choice"
+            ;;
+    esac
+
+    echo "Do you want to continue? (y/n)"
+    read i
+    if [ $i != "y" ]; then
+        exit
+    fi
+done
+
+4.
+echo "Enter First Number:"
+read a
+echo "Enter Second Number:"
+read b
+echo "Enter Third Number:"
+read c
+
+max=$a
+
+if [ $b -gt $max ]; then
+    max=$b
+fi
+
+if [ $c -gt $max ]; then
+    max=$c
+fi
+
+echo "Largest of $a $b $c is $max"
+
+
+5.
+clear
+echo "Enter First Number:"
+read a
+echo "Enter Second Number:"
+read b
+echo "Enter Third Number:"
+read c
+
+m=$((($a + $b + $c) / 3))
+p=`expr $a - $m`
+q=`expr $b - $m`
+r=`expr $c - $m`
+d=$((($p * $p + $q * $q + $r * $r) / 2))
+w=$(echo "scale=2; sqrt($d)" | bc -l)
+
+echo "Mean of $a $b $c is $m"
+echo "Standard deviation is $w"
+
+
+6.
+echo "Enter a number:"
+read n
+s=0
+p=$n
+
+while [ $n -gt 0 ]
+do
+    r=`expr $n % 10`
+    s=`expr $s + $r`
+    n=`expr $n / 10`
+done
+
+echo "Sum of digits of given number $p is $s"
+
+
+7.
+echo "Enter a number:"
+read n
+s=0
+p=$n
+
+while [ $n -gt 0 ]
+do
+    r=$(($n % 10))
+    s=$(($s * 10 + $r))
+    n=$(($n / 10))
+done
+
+echo "Reverse of the given number $p is $s"
+
+7.
+echo "Enter a number:"
+read n
+s=0
+p=$n
+
+while [ $n -gt 0 ]
+do
+    r=$(($n % 10))
+    s=$(($s * 10 + $r))
+    n=$(($n / 10))
+done
+
+echo "Reverse of the given number $p is $s"
+
+
+8.
+echo "Enter a limit:"
+read limit
+n=2
+
+while [ $n -le $limit ]
+do
+    i=2
+    f=0
+
+    while [ $i -lt $n ]
+    do
+        if [ `expr $n % $i` -eq 0 ]; then
+            f=1
+            break
+        fi
+        i=`expr $i + 1`
+    done
+
+    if [ $f -eq 0 ]; then
+        echo $n
+    fi
+
+    n=`expr $n + 1`
+done
+
+9.
+echo "Enter a Limit:"
+read num
+
+a=0
+b=1
+n=1
+
+while [ $n -le $num ]
+do
+    echo $a
+    c=$((a + b))
+    a=$b
+    b=$c
+    n=$((n + 1))
+done
+
+10.
+echo "Enter a Number:"
+read n
+s=0
+p=$n
+
+while [ $n -gt 0 ]
+do
+    r=$(($n % 10))
+    s=$(($s + $r * $r * $r))
+    n=$(($n / 10))
+done
+
+if [ $p -eq $s ]; then
+    echo "Given number is Armstrong"
+else
+    echo "Given number is Not Armstrong"
+fi
+
+11.
+echo "Enter a string:"
+read s
+
+t=`echo $s | wc -c`
+t=`expr $t - 1`
+temp=""
+temp1=""
+
+while [ $t -ne 0 ]
+do
+    temp=`echo $s | cut -c $t`
+    temp1=`echo $temp1$temp`
+    t=`expr $t - 1`
+done
+
+echo "Reverse of the string is $temp1"
+
+if [ "$s" == "$temp1" ]; then
+    echo "Given String $s is Palindrome"
+else
+    echo "Given String $s is Not Palindrome"
+fi
+
+12.
+echo "Enter the filename:"
+read file
+
+w=$(cat "$file" | wc -w)
+
+c=$(cat "$file" | wc -m)
+
+l=$(cat "$file" | wc -m)
+
+echo "Number of characters in $file is $c"
+echo "Number of words in $file is $w"
+echo "Number of lines in $file is $l"
+
+
+13.
+echo "Enter a Number"
+read n
+
+fact=1
+
+while [ $n -gt 0 ]
+do
+    fact=`expr $fact \* $n`
+    n=`expr $n - 1`
+done
+
+echo "Factorial is $fact"
+
+14.
+echo "Enter Your basic salary:"
+read sal
+
+da=$(expr $sal \* 40 / 100)
+hra=$(expr $sal \* 20 / 100)
+nSal=$(expr $sal + $da + $hra)
+
+echo "Your Basic Salary: $sal"
+echo "Your Dearness Allowance: $da"
+echo "Your House Rent Allowance: $hra"
+echo "Your Net Salary is Rs. $nSal"
+
+15.
+clear
+hours='date cut-c12-13"
+if [ Shours -le 12]
+then
+else
+echo "Good Morning"
+if [ $hours -le 16]
+then
+echo "Good Afternoon"
+elif [ $hours -le 20]
+then
+echo "Good Evening"
+else
+echo "Good Night"
+fi
+fi
